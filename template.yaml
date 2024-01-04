@@ -17,7 +17,7 @@ Resources:
   GetIngredientsFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ingredients/
+      CodeUri: service/
       Handler: app.getIngredients
       Runtime: nodejs18.x
       Architectures:
