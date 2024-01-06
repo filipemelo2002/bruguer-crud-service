@@ -1,12 +1,14 @@
 import { Ingredient } from "@entities/ingredient";
 import { IngredientsRepository } from "@repositories/ingredients-repository";
+import { inject, injectable } from "inversify";
 
 interface IngredientServiceListResponse {
   ingredients: Ingredient[];
 }
+@injectable()
 export class IngredientService {
 
-  constructor(private service: IngredientsRepository) {
+  constructor(@inject(IngredientsRepository) private service: IngredientsRepository) {
 
   }
 
