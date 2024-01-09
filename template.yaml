@@ -13,6 +13,12 @@ Globals:
     # You can add LoggingConfig parameters such as the Logformat, Log Group, and SystemLogLevel or ApplicationLogLevel. Learn more here https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-resource-function.html#sam-function-loggingconfig.
     LoggingConfig:
       LogFormat: JSON
+    Environment:
+      Variables:
+        DATABASE: burguer-app 
+        HOST: sam-postgre
+        USERNAME: sam-user 
+        PASSWORD: my-password
 Resources:
   GetIngredientsFunction:
     Type: AWS::Serverless::Function
