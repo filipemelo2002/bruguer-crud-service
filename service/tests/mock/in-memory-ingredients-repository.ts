@@ -7,4 +7,8 @@ export class InMemoryIngredientsRepository implements IngredientsRepository {
   public async list(): Promise<Ingredient[]> {
     return this.ingredients;
   }
+
+  public async create(ingredient: Ingredient) {
+    this.ingredients.push(ingredient);
+  }
 }

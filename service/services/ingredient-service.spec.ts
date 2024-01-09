@@ -16,4 +16,12 @@ describe('Ingredient Service', () => {
     const { ingredients } = await service.list();
     expect(ingredients).toEqual(ingredientsList);
   })
+
+  it('should create a ingredient', async () => {
+    const ingredient = makeIngredient({});
+
+    await repository.create(ingredient);
+
+    expect(repository.ingredients).toContain(ingredient);
+  })
 })

@@ -19,4 +19,11 @@ export class TypeORMIngredientsRepository implements IngredientsRepository {
     return ingredients.map(IngredientsMapper.toDomain)
   }
 
+  async create(ingredient: Ingredient): Promise<void> {
+    await this.repository.save({
+      id: ingredient.id,
+      name: ingredient.name,
+      quantity: ingredient.quantity
+    })
+  }
 }

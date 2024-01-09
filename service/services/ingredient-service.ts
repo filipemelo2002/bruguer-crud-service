@@ -19,4 +19,8 @@ export class IngredientService {
       ingredients
     }
   }
+
+  async create(ingredient: Ingredient): Promise<void> {
+    await this.service.create(ingredient);
+  }
 }
