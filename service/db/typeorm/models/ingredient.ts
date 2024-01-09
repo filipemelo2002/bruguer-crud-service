@@ -1,15 +1,15 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-@Entity()
+@Entity("ingredients")
 export class IngredientModel {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
   @Column({
-    length: 50
+    type: 'text'
   })
   name: string;
 
-  @Column("number")
+  @Column("int")
   quantity: number;
 }
