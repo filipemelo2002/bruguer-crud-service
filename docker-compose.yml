@@ -1,0 +1,19 @@
+version: '3.1'
+services:
+  db:
+    image: postgres
+    container_name: sam-postgre
+    environment:
+      POSTGRES_PASSWORD: my-password
+      POSTGRES_USER: sam-user
+      POSTGRES_DB: burguer-app
+    ports:
+      - 5432:5432
+    networks:
+      - sam-bridge
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+networks:
+  sam-bridge:
+    driver: bridge
+
