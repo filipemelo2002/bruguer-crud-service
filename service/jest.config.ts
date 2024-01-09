@@ -18,5 +18,6 @@ export default {
   testMatch: ['**/*.spec.ts'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>/',
-  })
+  }),
+  setupFilesAfterEnv: ['<rootDir>/jest.setup.ts']
 };
