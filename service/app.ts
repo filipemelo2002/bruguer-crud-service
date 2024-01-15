@@ -4,11 +4,13 @@ import { lambdaHandler as createIngredient } from './lambdas/create-ingredient';
 import { lambdaHandler as updateIngredient } from './lambdas/update-ingredient';
 import { lambdaHandler as getIngredient } from './lambdas/get-ingredient';
 import { lambdaHandler as deleteIngredient } from './lambdas/delete-ingredient';
+import { lambdaHandler as createSnack } from './lambdas/create-snack';
 
 export {
   getIngredients,
   createIngredient,
   updateIngredient,
   deleteIngredient,
-  getIngredient
+  getIngredient,
+  createSnack
 };

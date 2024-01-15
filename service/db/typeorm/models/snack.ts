@@ -1,8 +1,8 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { SnackIngredientModel } from "./snack-ingredient";
 
-@Entity("ingredients")
-export class IngredientModel {
+@Entity("snack")
+export class SnackModel {
   @PrimaryGeneratedColumn("uuid")
   id: string;
 
@@ -11,9 +11,6 @@ export class IngredientModel {
   })
   name: string;
 
-  @Column("int")
-  quantity: number;
-
-  @OneToMany(() => SnackIngredientModel, (snackIngredient) => snackIngredient.ingredient)
-  snackIngredients: SnackIngredientModel[];
+  @OneToMany(() => SnackIngredientModel, (snackIngredient) => snackIngredient.snack)
+  ingredients: SnackIngredientModel[];
 }

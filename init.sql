@@ -1,6 +1,19 @@
 CREATE TABLE IF NOT EXISTS ingredients(
   id VARCHAR(50) PRIMARY KEY,
   name VARCHAR(100) NOT NULL,
-  quantity INTEGER,
+  quantity INTEGER
 );
 
+CREATE TABLE IF NOT EXISTS snacks(
+  id VARCHAR(50) PRIMARY KEY,
+  name VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS snackIngredient(
+  id VARCHAR(50) PRIMARY KEY,
+  snack_id VARCHAR(50),
+  ingredient_id VARCHAR(50),
+  quantity INTEGER,
+  FOREIGN KEY (snack_id) REFERENCES snacks(id) ON DELETE CASCADE,
+  FOREIGN KEY (ingredient_id) REFERENCES ingredients(id) ON DELETE CASCADE
+);
