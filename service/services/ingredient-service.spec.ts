@@ -54,4 +54,13 @@ describe('Ingredient Service', () => {
     expect(ingredient.quantity).toEqual(1000)
   })
 
+  it('should remove ingredient', async () => {
+    const auxIngredients = [makeIngredient({ id: 'id-1' }), makeIngredient({ id: 'id-2' })];
+    await service.create(auxIngredients[0]);
+    await service.create(auxIngredients[1]);
+
+    await service.delete('id-1');
+
+    expect(repository.ingredients).not.toContain(auxIngredients[0]);
+  })
 })

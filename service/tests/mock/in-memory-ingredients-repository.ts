@@ -20,5 +20,16 @@ export class InMemoryIngredientsRepository implements IngredientsRepository {
     const ingredientIndex = this.ingredients.findIndex(ingredient => ingredient.id === request.id);
     this.ingredients[ingredientIndex] = request
   }
+
+  public async delete(id: string) {
+    const index = this.ingredients.findIndex(ingredient => ingredient.id === id);
+
+    if (index < 0) {
+      return;
+    }
+
+    this.ingredients.splice(index, 1);
+
+  }
 }
 
