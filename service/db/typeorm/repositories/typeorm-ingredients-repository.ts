@@ -46,4 +46,8 @@ export class TypeORMIngredientsRepository implements IngredientsRepository {
       name: ingredient.name
     });
   }
+
+  async delete(id: string): Promise<void> {
+    await this.repository.delete({ id });
+  }
 }

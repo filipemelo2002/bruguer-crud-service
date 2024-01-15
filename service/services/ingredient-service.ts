@@ -74,6 +74,14 @@ export class IngredientService {
   }
 
   async delete(id: string): Promise<void> {
+
+
+    const ingredient = await this.service.findOne(id);
+
+    if (!ingredient) {
+      throw new IngredientNotFound();
+    }
+
     await this.service.delete(id);
   }
 }
