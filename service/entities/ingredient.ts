@@ -1,6 +1,6 @@
 import { randomUUID } from "crypto";
 
-interface IngredientProps {
+export interface IngredientProps {
   name: string;
   quantity: number;
 };

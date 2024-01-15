@@ -1,3 +1,4 @@
+import { IngredientNotFound } from "@errors/ingredient-not-found";
 import { makeIngredient } from "@tests/factories/ingredient-factory";
 import { InMemoryIngredientsRepository } from "@tests/mock/in-memory-ingredients-repository"
 import { IngredientService } from "./ingredient-service";
@@ -24,4 +25,33 @@ describe('Ingredient Service', () => {
 
     expect(repository.ingredients).toContain(ingredient);
   })
+
+  it('should throw error when fetching for ingredient', async () => {
+    expect(
+      () => service.findOne('whatever-non-existing-id')
+    ).rejects.toThrow(IngredientNotFound)
+  })
+
+  it('should throw error when updating ingredient', async () => {
+    expect(() => service.update({
+      id: 'whatever-non-existing-id',
+      quantity: 100
+    })).rejects.toThrow(IngredientNotFound);
+  });
+
+  it('should update ingredient', async () => {
+    const auxIngredient = makeIngredient({});
+
+    await service.create(auxIngredient);
+
+
+    const { ingredient } = await service.update({
+      id: auxIngredient.id,
+      quantity: 1000
+    });
+
+
+    expect(ingredient.quantity).toEqual(1000)
+  })
+
 })

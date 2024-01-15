@@ -39,6 +39,9 @@
       ],
       "@view-model/*": [
         "./view-model/*"
+      ],
+      "@errors/*": [
+        "./errors/*"
       ]
     }
   },

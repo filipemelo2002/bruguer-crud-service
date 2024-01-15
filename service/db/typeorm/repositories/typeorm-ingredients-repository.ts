@@ -26,4 +26,24 @@ export class TypeORMIngredientsRepository implements IngredientsRepository {
       quantity: ingredient.quantity
     })
   }
+
+  async findOne(id: string): Promise<Ingredient | null> {
+    const ingredient = await this.repository.findOne({
+      where: {
+        id
+      }
+    })
+
+    if (!ingredient) {
+      return null;
+    }
+    return IngredientsMapper.toDomain(ingredient)
+  }
+
+  async update(ingredient: Ingredient): Promise<void> {
+    await this.repository.update({ id: ingredient.id }, {
+      quantity: ingredient.quantity,
+      name: ingredient.name
+    });
+  }
 }
