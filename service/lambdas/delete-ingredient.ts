@@ -1,4 +1,4 @@
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { IngredientNotFound } from "@errors/ingredient-not-found";
 import { globalContainer } from "@inversify/inversify.config";
 import { IngredientsViewModel } from "@view-model/ingredients-view-model";

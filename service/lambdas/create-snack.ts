@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResultV2 } from "aws-lambda";
 import { globalContainer } from '@inversify/inversify.config';
 import { SnackService } from '../services/snack-service';
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { Snack } from "@entities/snack";
 
 

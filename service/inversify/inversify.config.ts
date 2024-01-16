@@ -1,4 +1,4 @@
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { TypeORMIngredientsRepository } from "@db/typeorm/repositories/typeorm-ingredients-repository";
 import { IngredientsRepository } from "@repositories/ingredients-repository";
 import { Container } from "inversify";

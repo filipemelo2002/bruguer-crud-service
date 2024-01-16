@@ -2,7 +2,7 @@
 import { globalContainer } from '@inversify/inversify.config';
 import { APIGatewayEvent, APIGatewayProxyResult } from 'aws-lambda';
 import { IngredientService } from '../services/ingredient-service';
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { IngredientsViewModel } from '@view-model/ingredients-view-model';
 import { LambdaResponse } from '../helpers/lambda-response';
 import { IngredientNotFound } from '@errors/ingredient-not-found';

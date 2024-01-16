@@ -1,7 +1,7 @@
 import { APIGatewayProxyEvent, APIGatewayProxyResultV2 } from "aws-lambda";
 import { globalContainer } from '@inversify/inversify.config';
 import { IngredientService } from '../services/ingredient-service';
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { Ingredient } from "@entities/ingredient";
 
 

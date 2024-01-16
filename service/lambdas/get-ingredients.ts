@@ -1,7 +1,7 @@
 import { globalContainer } from '@inversify/inversify.config';
 import { APIGatewayProxyResult } from 'aws-lambda';
 import { IngredientService } from '../services/ingredient-service';
-import AppDataSource from "@db/typeorm/datasource";
+import { AppDataSource } from "@db/typeorm/datasource";
 import { IngredientsViewModel } from '@view-model/ingredients-view-model';
 
 export const lambdaHandler = async (): Promise<APIGatewayProxyResult> => {
