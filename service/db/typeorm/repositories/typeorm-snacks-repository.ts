@@ -5,6 +5,7 @@ import { DataSource, Repository } from "typeorm";
 import { SnackIngredientModel } from "../models/snack-ingredient";
 import { SnackModel } from "../models/snack";
 import { SnackIngredientsMapper } from "../mappers/snack-ingredients-mapper";
+import { SnackMapper } from "../mappers/snack-mapper";
 
 @injectable()
 export class TypeORMSnacksRepository implements SnacksRepository {
@@ -29,6 +30,15 @@ export class TypeORMSnacksRepository implements SnacksRepository {
         return snackIngredient;
       })
     );
+  }
+
+  async list(): Promise<Snack[]> {
+    const snackModels = await this.repository.createQueryBuilder('snacks')
+    .leftJoinAndSelect('snacks.ingredients', 'snackIngredient')
+    .leftJoinAndSelect('snackIngredient.ingredient', 'ingredient')
+    .leftJoinAndSelect('snackIngredient.snack', 'snack')
+    .getMany();
+    return snackModels.map(SnackMapper.toDomain)
   }
 
 }

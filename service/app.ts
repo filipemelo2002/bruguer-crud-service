@@ -5,6 +5,7 @@ import { lambdaHandler as updateIngredient } from './lambdas/update-ingredient';
 import { lambdaHandler as getIngredient } from './lambdas/get-ingredient';
 import { lambdaHandler as deleteIngredient } from './lambdas/delete-ingredient';
 import { lambdaHandler as createSnack } from './lambdas/create-snack';
+import { lambdaHandler as getSnacks } from './lambdas/get-snacks';
 
 export {
   getIngredients,
@@ -12,5 +13,6 @@ export {
   updateIngredient,
   deleteIngredient,
   getIngredient,
-  createSnack
+  createSnack,
+  getSnacks
 };

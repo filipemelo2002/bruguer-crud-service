@@ -1,13 +1,16 @@
 import { IngredientModel } from "../models/ingredient";
 import { SnackIngredientModel } from "../models/snack-ingredient";
 import { SnackIngredient } from "@entities/snack-ingredient";
-import { IngredientsMapper } from "./ingredients-mapper";
+import { Ingredient } from "@entities/ingredient";
 
 export class SnackIngredientsMapper {
 
   static toDomain(ingredient: SnackIngredientModel) {
     const snackIngredient = new SnackIngredient({
-      ingredient: IngredientsMapper.toDomain(ingredient.ingredient),
+      ingredient: new Ingredient({
+        name: ingredient.ingredient?.name,
+        quantity: ingredient.ingredient?.quantity
+      }, ingredient.ingredient.id),
       snackId: ingredient.snack.id,
       quantity: ingredient.quantity
     }, ingredient.id)
