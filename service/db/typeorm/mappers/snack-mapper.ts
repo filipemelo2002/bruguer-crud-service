@@ -7,7 +7,7 @@ export class SnackMapper {
     const snackEntity = new Snack({
       ingredients: snack.ingredients.map(SnackIngredientsMapper.toDomain),
       name: snack.name
-    })
+    }, snack.id)
     return snackEntity
   }
 }

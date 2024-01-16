@@ -41,4 +41,22 @@ export class TypeORMSnacksRepository implements SnacksRepository {
     return snackModels.map(SnackMapper.toDomain)
   }
 
+  async findOne(id: string): Promise<Snack | null> {
+    const snackModel = await this.repository.createQueryBuilder('snacks')
+    .leftJoinAndSelect('snacks.ingredients', 'snackIngredient')
+    .leftJoinAndSelect('snackIngredient.ingredient', 'ingredient')
+    .leftJoinAndSelect('snackIngredient.snack', 'snack')
+    .where("snacks.id = :id", {id})
+    .getOne();
+
+    if(!snackModel) {
+      return null;
+    }
+
+    return SnackMapper.toDomain(snackModel)
+  }
+
+  async update(snack: Snack): Promise<void> {
+    
+  }
 }
