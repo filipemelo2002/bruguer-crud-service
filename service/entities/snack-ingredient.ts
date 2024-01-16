@@ -1,8 +1,9 @@
 import { randomUUID } from "crypto";
+import { Ingredient } from "./ingredient";
 
 export interface SnackIngredientProps {
   quantity: number;
-  ingredientId: string;
+  ingredient: Ingredient;
   snackId?: string;
 }
 
@@ -24,13 +25,13 @@ export class SnackIngredient {
     this.props.quantity = quantity;
   }
 
-  get ingredientId() {
-    return this.props.ingredientId;
+  get ingredient() {
+    return this.props.ingredient;
   }
 
 
-  set ingredientId(ingredientId: string) {
-    this.props.ingredientId = ingredientId;
+  set ingredient(ingredient: Ingredient) {
+    this.props.ingredient = ingredient;
   }
 
   get snackId() {

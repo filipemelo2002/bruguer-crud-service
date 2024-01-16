@@ -3,9 +3,13 @@ import { globalContainer } from '@inversify/inversify.config';
 import { SnackService } from '../services/snack-service';
 import { AppDataSource } from "@db/typeorm/datasource";
 import { Snack } from "@entities/snack";
-import { SnackIngredient, SnackIngredientProps } from "@entities/snack-ingredient";
+import { SnackIngredient } from "@entities/snack-ingredient";
+import { Ingredient, IngredientProps } from "@entities/ingredient";
 
-
+interface CreateIngredientsRequest {
+  quantity: number;
+  ingredientId: string;
+}
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResultV2> => {
 
   try {
@@ -20,14 +24,18 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
     }
 
     const snack = JSON.parse(event.body);
+
     await snacksService.create(new Snack({
       name: snack.name,
-      ingredients: snack.ingredients.map((ingredient: SnackIngredientProps)=> new SnackIngredient({
-        ingredientId: ingredient.ingredientId,
+      ingredients: snack.ingredients.map((ingredient: CreateIngredientsRequest) => {
+        const igr = new Ingredient({} as IngredientProps , ingredient.ingredientId)
+        return new SnackIngredient({
+        ingredient: igr,
         quantity: ingredient.quantity,
         snackId: ''
-      }))
-    }));
+        }); 
+      })
+    }))
 
     return {
       statusCode: 201,
