@@ -8,11 +8,4 @@ export class IngredientsMapper {
       quantity: ingredient.quantity
     }, ingredient.id);
   }
-  static toTypeORM(value: Ingredient) {
-    const ingredient = new IngredientModel();
-    ingredient.id = value.id;
-    ingredient.name = value.name;
-    ingredient.quantity = value.quantity;
-    return ingredient;
-  }
 }

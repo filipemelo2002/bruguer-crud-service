@@ -3,6 +3,7 @@ import { globalContainer } from '@inversify/inversify.config';
 import { SnackService } from '../services/snack-service';
 import { AppDataSource } from "@db/typeorm/datasource";
 import { Snack } from "@entities/snack";
+import { SnackIngredient, SnackIngredientProps } from "@entities/snack-ingredient";
 
 
 export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGatewayProxyResultV2> => {
@@ -19,10 +20,13 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
     }
 
     const snack = JSON.parse(event.body);
-
     await snacksService.create(new Snack({
       name: snack.name,
-      ingredients: snack.quantity
+      ingredients: snack.ingredients.map((ingredient: SnackIngredientProps)=> new SnackIngredient({
+        ingredientId: ingredient.ingredientId,
+        quantity: ingredient.quantity,
+        snackId: ''
+      }))
     }));
 
     return {

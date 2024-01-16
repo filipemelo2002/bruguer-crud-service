@@ -1,7 +1,7 @@
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { SnackIngredientModel } from "./snack-ingredient";
 
-@Entity("snack")
+@Entity("snacks")
 export class SnackModel {
   @PrimaryGeneratedColumn("uuid")
   id: string;

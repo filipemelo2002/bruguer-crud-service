@@ -1,4 +1,4 @@
-import { Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { IngredientModel } from "./ingredient";
 import { SnackModel } from "./snack";
 
@@ -13,4 +13,6 @@ export class SnackIngredientModel {
   @ManyToOne(() => IngredientModel, (ingredient) => ingredient, {cascade: true})
   ingredient: IngredientModel;
 
+  @Column("int")
+  quantity: number;
 }

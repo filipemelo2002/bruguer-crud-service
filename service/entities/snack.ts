@@ -1,9 +1,9 @@
 import { randomUUID } from "crypto";
-import { Ingredient } from "./ingredient";
+import { SnackIngredient } from "./snack-ingredient";
 
 export interface SnackProps {
   name: string;
-  ingredients: Ingredient[];
+  ingredients: SnackIngredient[];
 }
 
 export class Snack {
@@ -29,7 +29,7 @@ export class Snack {
   }
 
 
-  set ingredients(ingredients: Ingredient[]) {
+  set ingredients(ingredients: SnackIngredient[]) {
     this.props.ingredients = ingredients;
   }
 
