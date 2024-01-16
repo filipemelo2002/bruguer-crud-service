@@ -5,8 +5,9 @@
     "preserveConstEnums": true,
     "noEmit": true,
     "sourceMap": false,
-    "module": "es2015",
+    "module": "CommonJS",
     "moduleResolution": "node",
+    "outDir": "./dist",
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
@@ -16,7 +17,8 @@
     "emitDecoratorMetadata": true,
     "types": [
       "reflect-metadata",
-      "jest"
+      "jest",
+      "node"
     ],
     "paths": {
       "@entities/*": [
