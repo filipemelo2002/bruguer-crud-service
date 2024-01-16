@@ -20,9 +20,11 @@ export class SnackIngredientsMapper {
     const snackIngredient = new SnackIngredientModel();
     snackIngredient.id = ingredient.id;
     snackIngredient.quantity = ingredient.quantity;
-    const ingr = new IngredientModel();
-    ingr.id = ingredient.ingredient.id;
-    snackIngredient.ingredient = ingr;
+    if (ingredient.ingredient) {
+      const ingr = new IngredientModel();
+      ingr.id = ingredient.ingredient.id;
+      snackIngredient.ingredient = ingr;
+    }
     return snackIngredient;
   }
 }

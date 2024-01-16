@@ -51,7 +51,7 @@ export class SnackService {
 
     const { id, name, ingredients } = request;
 
-    const snack = await this.service.findOne(id);
+    let snack = await this.service.findOne(id);
 
 
     if (!snack) {
@@ -67,21 +67,26 @@ export class SnackService {
     }
     
     await this.service.update(snack);
+    snack = await this.service.findOne(id);
+
+    if (!snack) {
+      throw new SnackNotFound();
+    }
 
     return {
       snack
     }
   }
 
-  async delete(id: string): Promise<void> {
+  // async delete(id: string): Promise<void> {
 
 
-    const snack = await this.service.findOne(id);
+  //   const snack = await this.service.findOne(id);
 
-    if (!snack) {
-      throw new SnackNotFound();
-    }
+  //   if (!snack) {
+  //     throw new SnackNotFound();
+  //   }
 
-    await this.service.delete(id);
-  }
+  //   await this.service.delete(id);
+  // }
 }

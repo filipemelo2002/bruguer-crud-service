@@ -6,6 +6,7 @@ import { SnackIngredientModel } from "../models/snack-ingredient";
 import { SnackModel } from "../models/snack";
 import { SnackIngredientsMapper } from "../mappers/snack-ingredients-mapper";
 import { SnackMapper } from "../mappers/snack-mapper";
+import { SnackNotFound } from "@errors/snack-not-found";
 
 @injectable()
 export class TypeORMSnacksRepository implements SnacksRepository {
@@ -57,6 +58,35 @@ export class TypeORMSnacksRepository implements SnacksRepository {
   }
 
   async update(snack: Snack): Promise<void> {
+    const snackEntity = await this.repository.findOne({
+      where: {
+        id: snack.id
+      }
+    })
+    const snackModel = await this.findOne(snack.id);
     
+    if (!snackModel || !snackEntity) {
+      throw new SnackNotFound();
+    }
+
+    const toDelete = snackModel.ingredients.filter(ingre => snack.ingredients.findIndex(({id}) => id === ingre.id) < 0);
+
+    await this.repository.update({id: snack.id}, {
+      name: snack.name,
+    })
+
+
+    if (snack.ingredients.length > 0) {
+      const ingredients =  snack.ingredients.map(ingredient => {
+        const snackIngredient =  SnackIngredientsMapper.toTypeORM(ingredient);
+        snackIngredient.snack = snackEntity;
+        return snackIngredient;
+      });
+      await this.snackIngredientRepository.save(ingredients);
+    }
+    
+    if (toDelete.length > 0) {
+      await this.snackIngredientRepository.delete(toDelete.map(({id}) => id));
+    }
   }
 }
