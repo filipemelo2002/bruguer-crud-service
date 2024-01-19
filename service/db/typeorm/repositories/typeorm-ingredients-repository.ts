@@ -4,13 +4,16 @@ import { inject, injectable } from "inversify";
 import { DataSource, Repository } from "typeorm";
 import { IngredientsMapper } from "../mappers/ingredients-mapper";
 import { IngredientModel } from "../models/ingredient";
+import { SnackIngredientModel } from "../models/snack-ingredient";
 
 @injectable()
 export class TypeORMIngredientsRepository implements IngredientsRepository {
   private repository: Repository<IngredientModel>;
+  private snackIngredientRepository: Repository<SnackIngredientModel>;
 
   constructor(@inject(DataSource) private service: DataSource) {
     this.repository = this.service.getRepository<IngredientModel>(IngredientModel);
+    this.snackIngredientRepository = this.service.getRepository<SnackIngredientModel>(SnackIngredientModel);
   }
 
   async list(): Promise<Ingredient[]> {
@@ -48,6 +51,11 @@ export class TypeORMIngredientsRepository implements IngredientsRepository {
   }
 
   async delete(id: string): Promise<void> {
+    await this.snackIngredientRepository.delete({
+      snack: {
+        id
+      }
+    });
     await this.repository.delete({ id });
   }
 }

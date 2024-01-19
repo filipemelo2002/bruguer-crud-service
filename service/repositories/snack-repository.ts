@@ -6,5 +6,5 @@ export abstract class SnacksRepository {
   abstract list(): Promise<Snack[]>;
   abstract findOne(id: string): Promise<Snack | null>;
   abstract update(snack: Snack): Promise<void>;
-  // abstract delete(id: string): Promise<void>;
+  abstract delete(id: string): Promise<void>;
 }

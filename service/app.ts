@@ -8,6 +8,7 @@ import { lambdaHandler as createSnack } from './lambdas/create-snack';
 import { lambdaHandler as getSnacks } from './lambdas/get-snacks';
 import { lambdaHandler as getSnack } from './lambdas/get-snack';
 import { lambdaHandler as updateSnack } from './lambdas/update-snack';
+import { lambdaHandler as deleteSnack } from './lambdas/delete-snack';
 
 export {
   getIngredients,
@@ -19,4 +20,5 @@ export {
   getSnacks,
   getSnack,
   updateSnack,
+  deleteSnack
 };

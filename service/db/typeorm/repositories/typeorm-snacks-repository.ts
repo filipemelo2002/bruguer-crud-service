@@ -89,4 +89,13 @@ export class TypeORMSnacksRepository implements SnacksRepository {
       await this.snackIngredientRepository.delete(toDelete.map(({id}) => id));
     }
   }
+
+  async delete(id: string): Promise<void> {
+    await this.snackIngredientRepository.delete({
+      snack: {
+        id
+      }
+    });
+    await this.repository.delete({id});
+  }
 }
