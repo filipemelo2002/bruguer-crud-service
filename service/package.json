@@ -11,8 +11,8 @@
       "lint": "eslint '*.ts' --quiet --fix",
       "compile": "tsc",
       "test": "npm run compile && npm run unit",
-      "migration:generate": "typeorm-ts-node-esm migration:generate -d ./db/typeorm/datasource.ts",
-      "migration:run": "typeorm-ts-node-esm migration:run -d ./db/typeorm/datasource.ts"
+      "migration:generate": "typeorm-ts-node-esm migration:generate -d ./dist/db/typeorm/datasource.js",
+      "migration:run": "typeorm-ts-node-esm migration:run -d ./dist/db/typeorm/datasource.js"
    },
    "dependencies": {
       "esbuild": "^0.14.14",
