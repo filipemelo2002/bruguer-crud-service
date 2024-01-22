@@ -21,7 +21,8 @@ export class TypeORMSnacksRepository implements SnacksRepository {
   async create(snack: Snack): Promise<void> {
     const snackModel = await this.repository.save({
       id: snack.id,
-      name: snack.name
+      name: snack.name,
+      price: snack.price
     });
 
     await this.snackIngredientRepository.save(
@@ -71,11 +72,6 @@ export class TypeORMSnacksRepository implements SnacksRepository {
 
     const toDelete = snackModel.ingredients.filter(ingre => snack.ingredients.findIndex(({id}) => id === ingre.id) < 0);
 
-    await this.repository.update({id: snack.id}, {
-      name: snack.name,
-    })
-
-
     if (snack.ingredients.length > 0) {
       const ingredients =  snack.ingredients.map(ingredient => {
         const snackIngredient =  SnackIngredientsMapper.toTypeORM(ingredient);
@@ -86,8 +82,14 @@ export class TypeORMSnacksRepository implements SnacksRepository {
     }
     
     if (toDelete.length > 0) {
-      await this.snackIngredientRepository.delete(toDelete.map(({id}) => id));
+      await this.snackIngredientRepository.delete(toDelete.map((auxIngre) => auxIngre.id));
     }
+
+    
+    await this.repository.update({id: snack.id}, {
+      name: snack.name,
+      price: snack.price
+    })
   }
 
   async delete(id: string): Promise<void> {

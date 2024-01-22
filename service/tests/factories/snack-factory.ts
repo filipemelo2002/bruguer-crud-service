@@ -8,12 +8,14 @@ export function makeSnack({
     makeSnackIngredient({ quantity: 2 }),
     makeSnackIngredient({ quantity: 2 }),
   ],
+  price = 30,
   id = "1",
 }) {
   return new Snack(
     {
       name,
       ingredients,
+      price
     },
     id
   );

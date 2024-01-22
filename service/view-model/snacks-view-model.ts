@@ -10,7 +10,8 @@ export class SnacksViewModel {
         ingredientId: ingredient.ingredient.id,
         name: ingredient.ingredient.name,
         quantity: ingredient.quantity
-      }))
+      })),
+      price: snack.price
     }
   }
 }

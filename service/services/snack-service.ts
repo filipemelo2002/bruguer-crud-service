@@ -8,7 +8,7 @@ interface SnackServiceListResponse {
   snacks: Snack[];
 }
 
-interface SnacksServiceUpdateRequest extends Optional<SnackProps, 'name' | 'ingredients'> {
+interface SnacksServiceUpdateRequest extends Optional<SnackProps, 'name' | 'ingredients'| 'price'> {
   id: string;
 }
 
@@ -49,7 +49,7 @@ export class SnackService {
 
   async update(request: SnacksServiceUpdateRequest): Promise<SnacksServiceFindOndeResponse> {
 
-    const { id, name, ingredients } = request;
+    const { id, name, ingredients, price } = request;
 
     let snack = await this.service.findOne(id);
 
@@ -66,6 +66,10 @@ export class SnackService {
       snack.ingredients = ingredients;
     }
     
+    if (price) {
+      snack.price = price;
+    }
+  
     await this.service.update(snack);
     snack = await this.service.findOne(id);
 

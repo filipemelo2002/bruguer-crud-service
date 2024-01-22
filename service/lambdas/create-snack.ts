@@ -24,7 +24,7 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
     }
 
     const snack = JSON.parse(event.body);
-
+    console.log(snack)
     await snacksService.create(new Snack({
       name: snack.name,
       ingredients: snack.ingredients.map((ingredient: CreateIngredientsRequest) => {
@@ -34,7 +34,8 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
         quantity: ingredient.quantity,
         snackId: ''
         }); 
-      })
+      }),
+      price: snack.price
     }))
 
     return {

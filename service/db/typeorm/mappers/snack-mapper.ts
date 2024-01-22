@@ -6,7 +6,8 @@ export class SnackMapper {
   static toDomain(snack: SnackModel) {
     const snackEntity = new Snack({
       ingredients: snack.ingredients.map(SnackIngredientsMapper.toDomain),
-      name: snack.name
+      name: snack.name,
+      price: Number(snack.price)
     }, snack.id)
     return snackEntity
   }

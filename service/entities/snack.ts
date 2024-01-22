@@ -4,6 +4,7 @@ import { SnackIngredient } from "./snack-ingredient";
 export interface SnackProps {
   name: string;
   ingredients: SnackIngredient[];
+  price: number;
 }
 
 export class Snack {
@@ -37,4 +38,11 @@ export class Snack {
     return this._id;
   }
 
+  get price(): number {
+    return this.props.price;
+  }
+
+  set price(price: number) {
+    this.props.price = price;
+  }
 }

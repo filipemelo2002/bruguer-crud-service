@@ -10,5 +10,5 @@ export const AppDataSource = new DataSource({
   username: process.env.USERNAME || "sam-user",
   password: process.env.PASSWORD || "my-password",
   entities: [IngredientModel, SnackModel, SnackIngredientModel],
-  migrations: [__dirname + "/migrations/**/*.{js,ts}"],
+  migrations: [__dirname + "/migrations/**/*.{js,ts}"]
 })

@@ -13,4 +13,7 @@ export class SnackModel {
 
   @OneToMany(() => SnackIngredientModel, (snackIngredient) => snackIngredient.snack)
   ingredients: SnackIngredientModel[];
+
+  @Column("decimal")
+  price: number;
 }

@@ -35,7 +35,8 @@ describe('Snack Service', () => {
   it('should throw error when updating snack', async () => {
     expect(() => service.update({
       id: 'whatever-non-existing-id',
-      name: "X-Egg Duplo"
+      name: "X-Egg Duplo",
+      price: 22
     })).rejects.toThrow(SnackNotFound);
   });
 
@@ -47,12 +48,14 @@ describe('Snack Service', () => {
 
     const { snack } = await service.update({
       id: auxSnack.id,
-      ingredients: [auxSnack.ingredients[0]]
+      ingredients: [auxSnack.ingredients[0]],
+      price: 20
     });
 
 
     expect(snack.ingredients.length).toEqual(1);
     expect(snack.ingredients[0]).toEqual(auxSnack.ingredients[0]);
+    expect(snack.price).toBe(20);
   })
 
   it('should remove snack', async () => {

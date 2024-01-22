@@ -37,7 +37,8 @@ export const lambdaHandler = async (event: APIGatewayEvent): Promise<APIGatewayP
         quantity: ingredient.quantity,
         ingredient: new Ingredient({} as IngredientProps, ingredient.ingredientId)
         } as SnackIngredientProps, ingredient.id); 
-      })
+      }),
+      price: snackAux.price
     }, id));
 
     return LambdaResponse.makeResponse(200, { snack: SnacksViewModel.toHTTP(snack) })
