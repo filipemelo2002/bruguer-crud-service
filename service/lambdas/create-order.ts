@@ -4,6 +4,9 @@ import { AppDataSource } from "@db/typeorm/datasource";
 import { Order } from "@entities/order";
 import { OrderService } from "../services/order-service";
 import { OrderItem, OrderItemProps } from "@entities/order-item";
+import { SnackNotFound } from "@errors/snack-not-found";
+import { LambdaResponse } from "../helpers/lambda-response";
+import { NotEnoughIngredients } from "@errors/not-enough-ingredients";
 
 interface CreateOrderItemsRequest {
   snackId: string;
@@ -40,6 +43,15 @@ export const lambdaHandler = async (event: APIGatewayProxyEvent): Promise<APIGat
 
   } catch (err) {
     console.log(err);
+
+    if (err instanceof SnackNotFound) {
+      return LambdaResponse.makeError(404, "could not find snack with given id")
+    }
+
+    if (err instanceof NotEnoughIngredients) {
+      return LambdaResponse.makeError(400, "not enough ingredients in storage")
+    }
+
     return {
       statusCode: 500,
       body: JSON.stringify({

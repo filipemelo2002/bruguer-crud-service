@@ -5,6 +5,7 @@ import { DataSource, Repository } from "typeorm";
 import { OrderModel } from "../models/order";
 import { OrderItemModel } from "../models/order-item";
 import { SnackModel } from "../models/snack";
+import { SnackNotFound } from "@errors/snack-not-found";
 
 @injectable()
 export class TypeORMOrdersRepository implements OrderRepository {
@@ -30,7 +31,7 @@ export class TypeORMOrdersRepository implements OrderRepository {
       const snack = await this.snackRepository.findOne({ where: { id: item.snackId } });
       
       if (!snack) {
-        continue;
+        throw new SnackNotFound();
       }
       
       item.price = snack.price;
@@ -42,8 +43,7 @@ export class TypeORMOrdersRepository implements OrderRepository {
         orderItemModel.notes = item.notes;
       }
       
-      orderItemModel.snack = new SnackModel();
-      orderItemModel.snack.id = snack.id;
+      orderItemModel.snack = snack;
       orderItemModel.order = orderModel;
       orderItemModel.price = snack.price;
 
