@@ -2,6 +2,8 @@ import { DataSource } from "typeorm";
 import { IngredientModel } from "./models/ingredient";
 import { SnackIngredientModel } from "./models/snack-ingredient";
 import { SnackModel } from "./models/snack";
+import { OrderItemModel } from "./models/order-item";
+import { OrderModel } from "./models/order";
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -9,6 +11,6 @@ export const AppDataSource = new DataSource({
   host: process.env.HOST || "localhost",
   username: process.env.USERNAME || "sam-user",
   password: process.env.PASSWORD || "my-password",
-  entities: [IngredientModel, SnackModel, SnackIngredientModel],
+  entities: [IngredientModel, SnackModel, SnackIngredientModel, OrderItemModel, OrderModel],
   migrations: [__dirname + "/migrations/**/*.{js,ts}"]
 })

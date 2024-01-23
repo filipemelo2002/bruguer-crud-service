@@ -7,6 +7,9 @@ import { IngredientService } from "../services/ingredient-service";
 import { SnacksRepository } from "@repositories/snack-repository";
 import { TypeORMSnacksRepository } from "@db/typeorm/repositories/typeorm-snacks-repository";
 import { SnackService } from "../services/snack-service";
+import { OrderRepository } from "@repositories/order-repository";
+import { TypeORMOrdersRepository } from "@db/typeorm/repositories/typeorm-orders-repository";
+import { OrderService } from "../services/order-service";
 
 
 const globalContainer = new Container();
@@ -22,5 +25,10 @@ globalContainer
   .to(TypeORMSnacksRepository);
 globalContainer
   .bind<SnackService>(SnackService).toSelf();
+globalContainer
+  .bind<OrderRepository>(OrderRepository)
+  .to(TypeORMOrdersRepository);
+globalContainer
+  .bind<OrderService>(OrderService).toSelf();
 
 export { globalContainer }
