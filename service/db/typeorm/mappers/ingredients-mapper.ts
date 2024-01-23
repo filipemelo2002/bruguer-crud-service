@@ -5,7 +5,7 @@ export class IngredientsMapper {
   static toDomain(ingredient: IngredientModel) {
     return new Ingredient({
       name: ingredient.name,
-      quantity: ingredient.quantity
+      quantity: Number(ingredient.quantity)
     }, ingredient.id);
   }
 }

@@ -4,7 +4,7 @@ export class IngredientsViewModel {
   static toHTTP(ingredient: Ingredient) {
     return {
       name: ingredient.name,
-      quantity: ingredient.quantity,
+      quantity: Number(ingredient.quantity),
       id: ingredient.id
     }
   }
