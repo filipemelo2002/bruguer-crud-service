@@ -1,5 +1,0 @@
-CREATE TABLE "snacks" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "name" text NOT NULL, CONSTRAINT "PK_7ae77e4dcf87277e4dd0c717c04" PRIMARY KEY ("id"));
-CREATE TABLE "snackingredient" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "snackId" uuid, "ingredientId" uuid, CONSTRAINT "PK_2438b8944ca6071f601c6cc8e92" PRIMARY KEY ("id"));
-CREATE TABLE "ingredients" ("id" uuid NOT NULL DEFAULT uuid_generate_v4(), "name" text NOT NULL, "quantity" integer NOT NULL, CONSTRAINT "PK_9240185c8a5507251c9f15e0649" PRIMARY KEY ("id"));
-ALTER TABLE "snackingredient" ADD CONSTRAINT "FK_889d610354efe4c14f1717b22cb" FOREIGN KEY ("snackId") REFERENCES "snacks"("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "snackingredient" ADD CONSTRAINT "FK_5936ce7cdc35d2c33e450ceea8a" FOREIGN KEY ("ingredientId") REFERENCES "ingredients"("id") ON DELETE NO ACTION ON UPDATE NO ACTION;
