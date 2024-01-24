@@ -290,15 +290,122 @@ Resources:
         EntryPoints:
         - app.ts
 Outputs:
-  # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
-  # Find out more about other implicit resources you can reference within SAM
-  # https://github.com/awslabs/serverless-application-model/blob/master/docs/internals/generated_resources.rst#api
-  HelloWorldApi:
-    Description: API Gateway endpoint URL for Prod stage for Hello World function
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
-  HelloWorldFunction:
-    Description: Hello World Lambda Function ARN
-    Value: !GetAtt HelloWorldFunction.Arn
-  HelloWorldFunctionIamRole:
-    Description: Implicit IAM Role created for Hello World function
-    Value: !GetAtt HelloWorldFunctionRole.Arn
+  GetIngredientsFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for GetIngredients function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ingredients/"
+  GetIngredientsFunction:
+    Description: Get Ingredients Function ARN
+    Value: !GetAtt GetIngredientsFunction.Arn
+  GetIngredientsFunctionIamRole:
+    Description: Implicit IAM Role created for GetIngredientsFunction function
+    Value: !GetAtt GetIngredientsFunction.Arn
+
+  CreateIngredientFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for CreateIngredient function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ingredients/"
+  CreateIngredientFunction:
+    Description: Create Ingredient Function ARN
+    Value: !GetAtt CreateIngredientFunction.Arn
+  CreateIngredientFunctionIamRole:
+    Description: Implicit IAM Role created for CreateIngredientFunction function
+    Value: !GetAtt CreateIngredientFunction.Arn
+
+  UpdateIngredientFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for UpdateIngredient function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ingredients/{id}"
+  UpdateIngredientFunction:
+    Description: Update Ingredient Function ARN
+    Value: !GetAtt UpdateIngredientFunction.Arn
+  UpdateIngredientFunctionIamRole:
+    Description: Implicit IAM Role created for UpdateIngredientFunction function
+    Value: !GetAtt UpdateIngredientFunction.Arn
+
+  GetIngredientFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for GetIngredient function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ingredients/{id}"
+  GetIngredientFunction:
+    Description: Get Ingredient Function ARN
+    Value: !GetAtt GetIngredientFunction.Arn
+  GetIngredientFunctionIamRole:
+    Description: Implicit IAM Role created for GetIngredientFunction function
+    Value: !GetAtt GetIngredientFunction.Arn
+
+  DeleteIngredientFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for DeleteIngredient function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/ingredients/{id}"
+  DeleteIngredientFunction:
+    Description: Delete Ingredient Function ARN
+    Value: !GetAtt DeleteIngredientFunction.Arn
+  DeleteIngredientFunctionIamRole:
+    Description: Implicit IAM Role created for DeleteIngredientFunction function
+    Value: !GetAtt DeleteIngredientFunction.Arn
+
+  CreateSnackFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for CreateSnack function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/snacks/"
+  CreateSnackFunction:
+    Description: Create Snack Function ARN
+    Value: !GetAtt CreateSnackFunction.Arn
+  CreateSnackFunctionIamRole:
+    Description: Implicit IAM Role created for CreateSnackFunction function
+    Value: !GetAtt CreateSnackFunction.Arn
+
+  GetSnacksFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for GetSnacks function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/snacks/"
+  GetSnacksFunction:
+    Description: Get Snacks Function ARN
+    Value: !GetAtt GetSnacksFunction.Arn
+  GetSnacksFunctionIamRole:
+    Description: Implicit IAM Role created for GetSnacksFunction function
+    Value: !GetAtt GetSnacksFunction.Arn
+
+  GetSnackFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for GetSnack function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/snacks/{id}"
+  GetSnackFunction:
+    Description: Get Snack Function ARN
+    Value: !GetAtt GetSnackFunction.Arn
+  GetSnackFunctionIamRole:
+    Description: Implicit IAM Role created for GetSnackFunction function
+    Value: !GetAtt GetSnackFunction.Arn
+
+  UpdateSnackFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for UpdateSnack function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/snacks/{id}"
+  UpdateSnackFunction:
+    Description: Update Snack Function ARN
+    Value: !GetAtt UpdateSnackFunction.Arn
+  UpdateSnackFunctionIamRole:
+    Description: Implicit IAM Role created for UpdateSnackFunction function
+    Value: !GetAtt UpdateSnackFunction.Arn
+
+  DeleteSnackFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for DeleteSnack function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/snacks/{id}"
+  DeleteSnackFunction:
+    Description: Delete Snack Function ARN
+    Value: !GetAtt DeleteSnackFunction.Arn
+  DeleteSnackFunctionIamRole:
+    Description: Implicit IAM Role created for DeleteSnackFunction function
+    Value: !GetAtt DeleteSnackFunction.Arn
+
+  CreateOrderFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for CreateOrder function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/orders/"
+  CreateOrderFunction:
+    Description: Create Order Function ARN
+    Value: !GetAtt CreateOrderFunction.Arn
+  CreateOrderFunctionIamRole:
+    Description: Implicit IAM Role created for CreateOrderFunction function
+    Value: !GetAtt CreateOrderFunction.Arn
+
+  GetOrdersFunctionAPI:
+    Description: API Gateway endpoint URL for Prod stage for GetOrders function
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/orders/"
+  GetOrdersFunction:
+    Description: Get Orders Function ARN
+    Value: !GetAtt GetOrdersFunction.Arn
+  GetOrdersFunctionIamRole:
+    Description: Implicit IAM Role created for GetOrdersFunction function
+    Value: !GetAtt GetOrdersFunction.Arn
