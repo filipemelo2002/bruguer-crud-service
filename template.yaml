@@ -29,7 +29,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        List:
           Type: Api
           Properties:
             Path: /ingredients
@@ -51,7 +51,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Create:
           Type: Api
           Properties:
             Path: /ingredients
@@ -74,7 +74,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Update:
           Type: Api
           Properties:
             Path: /ingredients/{id}
@@ -97,7 +97,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Get:
           Type: Api
           Properties:
             Path: /ingredients/{id}
@@ -119,7 +119,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Delete:
           Type: Api
           Properties:
             Path: /ingredients/{id}
@@ -141,7 +141,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Create:
           Type: Api
           Properties:
             Path: /snacks
@@ -164,7 +164,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        List:
           Type: Api
           Properties:
             Path: /snacks
@@ -186,7 +186,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Get:
           Type: Api
           Properties:
             Path: /snacks/{id}
@@ -208,7 +208,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetIngredients:
+        Update:
           Type: Api
           Properties:
             Path: /snacks/{id}
@@ -230,7 +230,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetDeleteSnack:
+        Delete:
           Type: Api
           Properties:
             Path: /snacks/{id}
@@ -253,7 +253,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetDeleteSnack:
+        Create:
           Type: Api
           Properties:
             Path: /orders
@@ -276,7 +276,7 @@ Resources:
       Architectures:
       - x86_64
       Events:
-        GetOrders:
+        List:
           Type: Api
           Properties:
             Path: /orders
