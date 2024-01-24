@@ -13,7 +13,7 @@ export class OrderItemModel {
   @Column("decimal")
   price: number;
 
-  @ManyToOne(() => SnackModel)
+  @ManyToOne(() => SnackModel, { onDelete: 'CASCADE' })
   snack: SnackModel;
 
   @Column({

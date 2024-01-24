@@ -40,4 +40,11 @@ export class OrderService {
     await this.repository.create(order);
   }
 
+  async list() {
+    const orders = await this.repository.list();
+
+    return {
+      orders
+    }
+  }
 }

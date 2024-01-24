@@ -1,10 +1,12 @@
 import { randomUUID } from "crypto";
+import { Snack } from "./snack";
 
 export interface OrderItemProps {
   snackId: string;
   quantity: number;
   notes?: string;
   price: number;
+  snack: Snack;
 }
 export class OrderItem {
   private _id: string;
@@ -51,4 +53,13 @@ export class OrderItem {
   get id() {
     return this._id;
   }
+
+  get snack() {
+    return this.props.snack;
+  }
+
+  set snack(snack: Snack) {
+    this.snack = snack;
+  }
+  
 }

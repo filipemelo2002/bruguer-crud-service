@@ -10,6 +10,7 @@ import { lambdaHandler as getSnack } from './lambdas/get-snack';
 import { lambdaHandler as updateSnack } from './lambdas/update-snack';
 import { lambdaHandler as deleteSnack } from './lambdas/delete-snack';
 import { lambdaHandler as createOrder } from './lambdas/create-order';
+import { lambdaHandler as getOrders } from './lambdas/get-orders';
 
 export {
   getIngredients,
@@ -22,5 +23,6 @@ export {
   getSnack,
   updateSnack,
   deleteSnack,
-  createOrder
+  createOrder,
+  getOrders
 };

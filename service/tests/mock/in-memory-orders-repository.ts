@@ -8,4 +8,7 @@ export class InMemoryOrdersRepository implements OrderRepository {
     this.orders.push(order);
   }
 
+  async list(): Promise<Order[]> {
+    return this.orders
+  }
 }

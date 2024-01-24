@@ -6,6 +6,7 @@ import { OrderModel } from "../models/order";
 import { OrderItemModel } from "../models/order-item";
 import { SnackModel } from "../models/snack";
 import { SnackNotFound } from "@errors/snack-not-found";
+import { OrdersMapper } from "../mappers/orders-mapper";
 
 @injectable()
 export class TypeORMOrdersRepository implements OrderRepository {
@@ -51,5 +52,14 @@ export class TypeORMOrdersRepository implements OrderRepository {
     }
 
     await this.orderItemRepository.save(items);
+  }
+
+  async list(): Promise<Order[]> {
+    const orderModels = await this.repository.createQueryBuilder("orders")
+    .leftJoinAndSelect("orders.items", "orderItems")
+    .leftJoinAndSelect("orderItems.snack", "snack")
+    .getMany()
+
+    return orderModels.map(OrdersMapper.toDomain)
   }
 }

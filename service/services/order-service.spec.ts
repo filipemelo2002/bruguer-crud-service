@@ -94,4 +94,24 @@ describe('Snack Service', () => {
 
     expect(() => service.create(order)).rejects.toThrow(NotEnoughIngredients)
   });
+
+  it('should list all orders', async () => {
+    ingredientsRepository.create(ingredient);
+    snackRepository.create(snack);
+
+    const order = makeOrder({
+      items: [
+        makeOrderItem({
+          snackId: snack.id,
+          quantity: 2
+        })
+      ]
+    });
+
+    await service.create(order);
+
+    const {orders} = await service.list();
+
+    expect(orders).toContain(order);
+  })
 })
